@@ -53,6 +53,7 @@ body {
     background-color: #FFFFFF ;
     color: var(--primary-text-color);
 
+
     font-family: Roboto, sans-serif;
     letter-spacing: 0.02em;
     font-size: 16px;
@@ -133,6 +134,25 @@ body {
 
 /* Header */
 
+.current {
+    position: relative;
+}
+
+.current::after{
+position: absolute;
+bottom: -1px;
+left:0;
+content: '';
+width: 100%;
+height: 4px;
+background: #404BBF;
+border-radius: 2px;
+
+}
+.site-nav .link.current{
+    color:#404BBF;
+}
+
 .main-nav{
     display:flex;
     align-items:center;
@@ -156,7 +176,7 @@ body {
 .address .item:not(:last-child) {
     margin-right: 40px;
 }
-.site-nav .link {
+.site-nav .link {     
     display: block;
     padding-top: 24px;
     padding-bottom: 24px;
@@ -593,5 +613,69 @@ body {
     box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 
     0px 1px 1px rgba(46, 47, 66, 0.16), 
     0px 2px 1px rgba(46, 47, 66, 0.08);
+    
+}
+
+
+
+/* MODAL */
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(46, 47, 66, 0.4);
+
+    transition: opacity var(--transition), 
+    visibility var(--transition);
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate( -50%, -50%) rotateX(0) ;
+  
+    width: 408px;
+    min-height: 576px;
+    padding: 20px;
+    transition: transform var(--transition);
+
+    background: #FCFCFC;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 
+    0px 1px 3px rgba(0, 0, 0, 0.12), 
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+
+}
+
+.close-icon {
+    fill:#2E2F42;
+}
+
+.close-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+
+    background: #E7E9FC;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+
+}
+
+.is-hidden{
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+}
+
+.backdrop.is-hidden .modal{
+    transform: translate(-50%, -50%) perspective(600px) rotateX(90deg);
     
 }
